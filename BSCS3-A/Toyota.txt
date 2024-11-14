@@ -1,0 +1,211 @@
+package com.example.myapplication;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+import com.example.myapplication.R;
+
+public class MainActivity extends AppCompatActivity {
+
+    private EditText customerName, address;
+    private Spinner modelSpinner, yearSpinner, interestSpinner;
+    private TextView price, monthlyPayablesResult;
+    private RadioGroup interestRateGroup;
+    private Button calculateButton;
+
+    private final String[] models = {"Wigo", "Innova", "Fortuner"};
+    private final int[] prices = {730000, 1200000, 2600000};
+    private final int[] interests = {73000, 120000, 260000}; // Fixed interest amounts
+
+    private final String[] years = {"1 year", "3 years", "5 years"};
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        customerName = findViewById(R.id.customerName);
+        address = findViewById(R.id.address);
+        modelSpinner = findViewById(R.id.modelSpinner);
+        yearSpinner = findViewById(R.id.yearSpinner);
+        interestSpinner = findViewById(R.id.interestSpinner);
+        price = findViewById(R.id.price);
+        monthlyPayablesResult = findViewById(R.id.monthlyPayablesResult);
+        interestRateGroup = findViewById(R.id.interestRateGroup);
+        calculateButton = findViewById(R.id.calculateButton);
+
+        ArrayAdapter<String> modelAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, models);
+        modelAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        modelSpinner.setAdapter(modelAdapter);
+
+        ArrayAdapter<String> yearAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, years);
+        yearAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        yearSpinner.setAdapter(yearAdapter);
+
+        modelSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                price.setText("Price: " + prices[position]);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+
+        calculateButton.setOnClickListener(v -> calculateMonthlyPayables());
+    }
+
+    private void calculateMonthlyPayables() {
+        int modelPosition = modelSpinner.getSelectedItemPosition();
+        int yearPosition = yearSpinner.getSelectedItemPosition();
+
+        int priceValue = prices[modelPosition];
+        int interestValue = interests[modelPosition]; // Get fixed interest value
+        int yearsValue = (yearPosition == 0) ? 1 : (yearPosition == 1 ? 3 : 5);
+
+        // Calculate total amount minus interest
+        double totalAmount = priceValue - interestValue;
+        int months = yearsValue * 12;
+        double monthlyPayable = totalAmount / months;
+
+        monthlyPayablesResult.setText(String.format("Monthly Payables: %.2f", monthlyPayable));
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/customerName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Customer Name" />
+
+    <EditText
+        android:id="@+id/address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Address"
+        android:layout_below="@id/customerName"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/modelLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Model:"
+        android:layout_below="@id/address"
+        android:layout_marginTop="16dp"/>
+
+    <Spinner
+        android:id="@+id/modelSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/modelLabel"/>
+
+    <TextView
+        android:id="@+id/priceLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Price:"
+        android:layout_below="@id/modelSpinner"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/priceLabel"/>
+
+    <TextView
+        android:id="@+id/yearLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Year:"
+        android:layout_below="@id/price"
+        android:layout_marginTop="16dp"/>
+
+    <Spinner
+        android:id="@+id/yearSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/yearLabel"/>
+
+    <TextView
+        android:id="@+id/interestLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Interest:"
+        android:layout_below="@id/yearSpinner"
+        android:layout_marginTop="16dp"/>
+
+    <Spinner
+        android:id="@+id/interestSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/interestLabel" />
+
+    <TextView
+        android:id="@+id/monthlyPayables"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Monthly Payables:"
+        android:layout_below="@id/interestSpinner"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/monthlyPayablesResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/monthlyPayables"
+        android:layout_marginTop="4dp"/>
+
+    <RadioGroup
+        android:id="@+id/interestRateGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/monthlyPayablesResult"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+
+        <RadioButton
+            android:id="@+id/radioTen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10%" />
+
+        <RadioButton
+            android:id="@+id/radioTwenty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20%" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/calculateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calculate"
+        android:layout_below="@id/interestRateGroup"
+        android:layout_marginTop="16dp"/>
+
+</RelativeLayout>

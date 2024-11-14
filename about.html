@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About | Personal Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+
+        <ul id="sidemenu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+
+        </ul>
+
+    </nav>
+
+    <!-- About Section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="profile.jpg" class="imag2">
+                </div>
+                <div class="about-col-2">
+                    <h1 class="sub-title">About Me</h1>
+                    <p style="color: gray;">
+                        An enthusiastic person eager to contribute to team success through hard work, also having knowledge in HTML, CSS, Java, and web technologies.
+                    </p>
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                        <p class="tab-links" onclick="opentab('achievements')">Achievements</p>
+                        <p class="tab-links" onclick="opentab('education')">Education</p>
+                    </div>
+                    <div class="tab-contents active-tab" id="skills">
+                        <ul>
+                            <li>• HTML and CSS</li>
+                            <li>• Web development</li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="achievements">
+                        <ul>
+                            <li>• With honor in Grade 6</li>
+                            <li>• Event Manager of SITES in second year</li>
+                            <li>• Vice President of SITES in third year</li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="education">
+                        <ul>
+                            <li>• San Francisco Elementary School</li>
+                            <li>• San Juan National High School</li>
+                            <li>• Cainta Catholic College</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <div class="copyright">
+        <p>© 2024 Edmar Suarez Jr</p>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,241 @@
+﻿body {
+
+  background: linear-gradient(
+    90deg,
+    rgb(86, 86, 86),
+    rgb(129, 129, 129)),
+    rgb(190, 190, 190),
+;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  font-family: Helvetica;
+}
+
+
+.sep {
+  display: flex; /* Use flexbox to align items */
+  flex-direction: column; /* Stack the items vertically */
+  align-items: center; /* Horizontally center the content */
+  text-align: center; /* Center text inside the div */
+  justify-content: center; /* Vertically center the content */
+  padding: 20px; /* Add padding for spacing around the content */
+  width: 100%; /* Ensure it takes up the full width of its parent */
+}
+
+/* Larger font for paragraphs inside .sep */
+.sep p {
+  max-width: 80%; /* Limit the width of the paragraph for readability */
+  margin: 20px 0; /* Add margin for spacing */
+  font-size: 1.5rem; /* Increased font size */
+  line-height: 1.8em; /* Larger line height for better readability */
+}
+
+/* Larger font for links inside .sep */
+.sep a {
+  font-size: 1.4rem; /* Larger font size for links */
+  color: #ff69b4; /* Pink color for links */
+  text-decoration: none; /* Remove underline */
+  margin-top: 10px; /* Add space above the link */
+}
+.box-1 {
+  flex: 1;
+}
+
+.box-2 {
+  flex: 2;
+}
+
+#title {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: white;
+}
+#img-div {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  align-content: center;
+}
+
+#image {
+  padding: 12px;
+  margin: 10px;
+  align-content: center;
+  max-width: 100%;
+  display: block;
+  height: auto;
+ 
+  border-radius: 100%;
+}
+#navbar {
+  display: flex;
+  justify-content: center; 
+  background-color: #333; 
+  padding: 10px 0; 
+}
+
+#navbar ul {
+  list-style-type: none; 
+  margin: 0; 
+  padding: 0; 
+  display: flex;
+}
+
+#navbar ul li {
+  margin: 0 15px;
+}
+
+#navbar ul li a {
+  text-decoration: none; 
+  color: white; 
+  font-size: 1.2rem; 
+  font-weight: bold; 
+  text-transform: uppercase; 
+  padding: 10px 20px; 
+  border-radius: 5px;
+  transition: background-color 0.3s ease; 
+}
+
+#navbar ul li a:hover {
+  background-color: #ff69b4;
+  color: #fff; 
+}
+
+#navbar ul li a:active {
+  background-color: #ff1493; 
+}
+
+img {
+  border-radius: 100%;
+}
+
+#img-caption {
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  font-size: 18px;
+}
+
+.header {
+   display: flex;
+  flex-direction: column;
+ background-image: url(Background.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: purple;
+  border-bottom: solid 3px black;
+  padding-bottom: 220px;
+  font-size: 20px;
+}
+
+P {
+  align-items: center;
+  padding: 30px;
+  line-height: 1.7em;
+  margin: 0 auto;
+  width: 70%;
+  color:whitesmoke;
+  background-color: black;
+  opacity: 0.88;
+}
+
+.add {
+  color: black;
+  font-size: 19px;
+  /*position: relative;
+    left: 5%; */
+}
+
+.heading {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  padding: 60px;
+  background-color: whitesmoke;
+  font-size: 20px;
+}
+
+.timeline {
+  /* not needed  justify-self: center;*/
+  /*  background-color: rgb(14, 13, 13);*/
+  position: relative;
+  /* not needed  right: 10%; */
+  opacity: 0.9;
+  margin: 30px 0px 30px 0px;
+  /* not needed line-height: 1.5em; */
+  width: 85%;
+  color: rgba(255, 250, 255, 0.726);
+  font-size: 18px;
+  /* not needed  left: 15%; */
+}
+
+ul li {
+  list-style: none;
+  text-align: center;
+  /* not needed width: 80%;*/
+  position: relative;
+  left: 10%;
+  cursor: pointer;
+  background-color: black;
+ 
+}
+li {
+  padding: 15px; 
+}
+
+ul li:nth-child(odd) {
+  background-color: grey;
+}
+ul li:hover {
+  background-color: pink;
+  font-size: 20px;
+  color: black;
+}
+
+#tribute-link {
+  position: relative;
+  left: 45%;
+  font-size: 18px;
+  background-color: black;
+  padding: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+#tribute-link:hover {
+  background-color: white;
+  color: purple;
+}
+.heading h2 {
+  font-size: 2rem; 
+  font-weight: bold;
+  color: #000;
+  text-align: center; 
+  margin: 0 auto;
+  padding: 20px; 
+  width: 100%; 
+}
+footer {
+  text-align: center;
+  font-size: 17px;
+  color: white;
+  background-color: black;
+  opacity: 0.9;
+  padding: 20px;
+}
+
+@media (max-width: 600px) {
+  p {
+    margin: 0;
+  }
+  #img {
+    border-radius: 100%;
+  }
+
+  #tribute-link {
+    position: relative;
+    left: 35%;
+  }
+}

@@ -1,0 +1,52 @@
+package com.example.myapplication;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
+public class MainActivity extends AppCompatActivity {
+    private CardView history, Programs, Admission, About;
+    @SuppressLint("MissingInflatedId")
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        history=findViewById(R.id.History);
+        Programs=findViewById(R.id.Programs);
+        Admission=findViewById(R.id.Admission);
+        About=findViewById(R.id.About);
+
+        history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,history.class);
+                startActivity(intent);
+            }
+        });
+        Programs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,Program.class);
+                startActivity(intent);
+            }
+        });
+        Admission.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new
+                        Intent(MainActivity.this,Admission.class);
+                startActivity(intent);
+            }
+        });
+        About.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, com.example.myapplication.About.class);
+                startActivity(intent);
+            }
+        });
+    }
+}
